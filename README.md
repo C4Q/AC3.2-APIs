@@ -2,59 +2,62 @@
 ---
 ### Solutions Table of Contents:
 
+> Todo: Only part 1
+
 1. Part 1
- 1. [Exercise Problem #1](https://github.com/C4Q/AC3.2-APIs/commit/eac9a12b045b9d8e429bea2455d8f464dc6df856)
- 2. [Exercise Problem #2](https://github.com/C4Q/AC3.2-APIs/commit/95d7ff70877ecfae063ca54535e3f4e44366be02)
- 3. [Exercise Problem #3](https://github.com/C4Q/AC3.2-APIs/commit/360b01f2c471790af8e9785abb0afa755e0ccbb3)
- 4. [Advanced Solution](https://github.com/C4Q/AC3.2-APIs/commit/50ea9acef5f4b02a99a9adc12f079b36570d08b5)
- 5. [Expert Solution](https://github.com/C4Q/AC3.2-APIs/commit/031933e726c840aeab8682ce46edcff09382997b)
+  1. [Exercise Problem #1](https://github.com/C4Q/AC3.2-APIs/commit/eac9a12b045b9d8e429bea2455d8f464dc6df856)
+  2. [Exercise Problem #2](https://github.com/C4Q/AC3.2-APIs/commit/95d7ff70877ecfae063ca54535e3f4e44366be02)
+  3. [Exercise Problem #3](https://github.com/C4Q/AC3.2-APIs/commit/360b01f2c471790af8e9785abb0afa755e0ccbb3)
+  4. [Advanced Solution](https://github.com/C4Q/AC3.2-APIs/commit/50ea9acef5f4b02a99a9adc12f079b36570d08b5)
+  5. [Expert Solution](https://github.com/C4Q/AC3.2-APIs/commit/031933e726c840aeab8682ce46edcff09382997b)
 2. Part 2
- 1. [Start of Project](https://github.com/C4Q/AC3.2-APIs/tree/2_part_II_setup)
- 2. [Full Solutions (Part 1 & 2)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
- 3. Answers to [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) exercises (TBD)
+  1. [Start of Project](https://github.com/C4Q/AC3.2-APIs/tree/2_part_II_setup)
+  2. [Full Solutions (Part 1 & 2)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
+  3. Answers to [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) exercises (TBD)
 3. Part 3
- 1. [Final code for lesson](https://github.com/C4Q/AC3.2-APIs/tree/3_userDefaults)
- 2. Answers for exerices (TBD)
+  1. [Final code for lesson](https://github.com/C4Q/AC3.2-APIs/tree/3_userDefaults)
+  2. Answers for exerices (TBD)
 
 Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) are not all covered, even in the "Full Solution" link. 
 
 ---
 ### Contents
+
 0. Intro
- 1. [Readings](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#readings)
- 2. [Resources](https://github.com/C4Q/AC3.2-APIs#resources)
- 3. [Objectives](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#objectives)
+  1. [Readings](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#readings)
+  2. [Resources](https://github.com/C4Q/AC3.2-APIs#resources)
+  3. [Objectives](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#objectives)
 1. APIs in Concept
- 1. [APIs, What Are They?](https://github.com/C4Q/AC3.2-APIs#apis-what-are-they)
- 2. [Why Do APIs Matter](https://github.com/C4Q/AC3.2-APIs#why-do-apis-matter)
- 3. [JSON (a deeper dive)](https://github.com/C4Q/AC3.2-APIs#json-a-deeper-dive)
- 4. [API Documentation](https://github.com/C4Q/AC3.2-APIs#api-documentation)
- 5. [Trying out an API](https://github.com/C4Q/AC3.2-APIs#trying-out-an-api)
+  1. [APIs, What Are They?](https://github.com/C4Q/AC3.2-APIs#apis-what-are-they)
+  2. [Why Do APIs Matter](https://github.com/C4Q/AC3.2-APIs#why-do-apis-matter)
+  3. [JSON (a deeper dive)](https://github.com/C4Q/AC3.2-APIs#json-a-deeper-dive)
+  4. [API Documentation](https://github.com/C4Q/AC3.2-APIs#api-documentation)
+  5. [Trying out an API](https://github.com/C4Q/AC3.2-APIs#trying-out-an-api)
 2. Working with Requests
- 1. [Postman](https://github.com/C4Q/AC3.2-APIs#postman)
- 2. [Testing API Requests and myjson](https://github.com/C4Q/AC3.2-APIs#testing-api-requests-and-myjson)
- 3. [The RandomUserAPI](https://github.com/C4Q/AC3.2-APIs#the-random-user-api)
+  1. [Postman](https://github.com/C4Q/AC3.2-APIs#postman)
+  2. [Testing API Requests and myjson](https://github.com/C4Q/AC3.2-APIs#testing-api-requests-and-myjson)
+  3. [The RandomUserAPI](https://github.com/C4Q/AC3.2-APIs#the-random-user-api)
 3. iFacesterGram (Project)
- 1. [iFacesterGram: Concept to Demo](https://github.com/C4Q/AC3.2-APIs#ifacestergram-concept-to-demo)
-   - [Design and Engineering](https://github.com/C4Q/AC3.2-APIs#design--engineering)
+  1. [iFacesterGram: Concept to Demo](https://github.com/C4Q/AC3.2-APIs#ifacestergram-concept-to-demo)
+    - [Design and Engineering](https://github.com/C4Q/AC3.2-APIs#design--engineering)
     - [Project Orientation](https://github.com/C4Q/AC3.2-APIs#project-orientation)
  2. [Designing the `User` Model](https://github.com/C4Q/AC3.2-APIs#designing-the-user-model)
  3. [Coding the `APIRequestManager`](https://github.com/C4Q/AC3.2-APIs#coding-the-apirequest-manager)
  4. [Parsing Data in Our Model](https://github.com/C4Q/AC3.2-APIs#parsing-data-in-our-model)
  5. [Pull-to-Refresh](https://github.com/C4Q/AC3.2-APIs#pull-to-refresh)
  6. [Exercises](https://github.com/C4Q/AC3.2-APIs#exercises)
-   - [1. More Requests](https://github.com/C4Q/AC3.2-APIs#1-more-requests)
+    - [1. More Requests](https://github.com/C4Q/AC3.2-APIs#1-more-requests)
     - [2. Error Handling](https://github.com/C4Q/AC3.2-APIs#2-error-handling-exercise-to-be-done-after-error-handling-lesson)
  
 ---
 ### Readings
 
 1. [What is an API? - Mulesoft via Youtube](https://www.youtube.com/watch?v=s7wmiS2mSXY)
- - This is a very quick and helpful video (must watch)
+  - This is a very quick and helpful video (must watch)
 2. [REST API Concepts - Webconcepts via Youtube](https://www.youtube.com/watch?v=7YcW25PHnAA)
- - This is a slightly longer, practical look at REST API's (must watch)
+  - This is a slightly longer, practical look at REST API's (must watch)
 3. [What is an API in English, Please](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.jxvvtoarm)
- - If you understood the two videos above this link, you don't really have to read this article
+  - If you understood the two videos above this link, you don't really have to read this article
 4. [Basics of Pull to Refresh - Andrew Bancroft](https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/)
 
 ### Resources:
@@ -62,8 +65,12 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
 2. [Random User API](https://randomuser.me/) - Simple API useful for simple user creation
 3. [Google Geocoding API: Intro](https://developers.google.com/maps/documentation/geocoding/intro)
 
+### Definitions:
+
+> Todo 
+
 ---
-### Objectives
+### 0. Objectives
 
 1. Introduce the concept of web-based APIs along with examples of popular webservices
 2. Frame using APIs as being able to develop amazing apps that would not be possible on your own or without large development teams
@@ -74,7 +81,7 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
 
 ---
  
-### API's, What Are They? 
+### 1. API's, What Are They? 
 
 > **How many weather apps do you think there are in the app store?**
 
@@ -92,7 +99,8 @@ When iOS developers talk about API's we usually mean one of two things:
 2. A REST API that is used to communicate with some service on the web, (like a weather API!)
  
 ----
-### Why do APIs matter
+
+#### Why do APIs matter
  
 __They allow you to develop software faster!__ The existance of APIs let you perform a variety of tasks that just take way too long to write out yourself. Can you imagine having to write out your own custom `JSONSerialization` function for every app you create?
  
@@ -107,7 +115,8 @@ In the context of web-based `REST API`s, they are how your app is going to talk 
 Apps can use multiple `REST` API's to perform complex tasks and create novel experiences for their users. With enough practice and skill, you can even develop your own APIs that other developers will use
  
 ---
-### JSON (A deeper dive)
+
+#### JSON (A deeper dive)
 
 Since there is a wide possibility of devices that use API's and many differnt APIs providing unique services, there needs to be a standard for how they can all communicate effectively. The most common format in use is `JSON` (Javascript Object Notation). `JSON` defines how the data returned from an API will be formatted, and at its core is really just a dictionary. You may even often hear json referred to as a "json dictionary." Though, the structure and content that json dictionary's key/value pairs is up to the API. This is what we mean when we say that __"an API defines it's data response"__.
  
@@ -118,20 +127,21 @@ To get a sense of what JSON looks like, and how its used, let's go ahead and nav
 Not an exciting result, but there's way more here than you might initially expect. For one, we see that the page is essentially a dictionary with three keys, `error_message, results, and status`. But why those three keys, and how can we know to expect them? And moreover, how did we know to go to that URL to even try this out?
  
 ----
-### API Documentation
+
+#### API Documentation
 
 As mentioned before, API's define a standard for how software can communicate. Meaning that they define the kinds of *requests* that can be made to them, along with the *response* they will return. `JSON` defines the structure and syntax of the request/response, but its up to the API as to what should be included in a request and what could be included in the response. 
  
- All APIs will provide documentation on exactly what they expect in a request, and what they will return in a response. 
- 
- ![Error message documentation](./Images/error_message.png)
- ![Status Codes documentation](./Images/status_codes.png)
-  
+All APIs will provide documentation on exactly what they expect in a request, and what they will return in a response. For example, take a look at this except from the google geocoding API docs:
+
+![Error message documentation](./Images/error_message.png)
+![Status Codes documentation](./Images/status_codes.png)
   
 > If we check out https://developers.google.com/maps/documentation/geocoding/intro we'll be able to see every possible request and response that can be made by the API.
 
 ----
-### Trying out an API
+
+#### Trying out an API
 
 So looking at our previous request:
 
@@ -141,23 +151,29 @@ So looking at our previous request:
  
 <details>
   <summary> Example 1: Adding An Address to the API call </summary>
+
 Go back to your prior request and add the "address" key along with a "value" of the address of C4Q
 For example: http://maps.googleapis.com/maps/api/geocode/json?address=%2243-06%2045th%20Street%22
-
+<br>
+<br>
 Note: Parameters appear following a single ? and spaces are replaced by %20 for the actual request, but the google api will understand the request the exact same way as if you put in "43-06 45th Street"
 </details>
 
 <details>
   <summary> Example 2: Compare valid request with invalid one </summary>
-  1. Notice how we get new data passed along with a valid request? 
-  2. Bring up the API documentation page again and compare the keys with what the API states will be returned
-  3. All of these results are listed in the API's documentation for this kind of response, so we will always know what to expect
+  <ol> 
+    <li>Notice how we get new data passed along with a valid request? 
+    <li>Bring up the API documentation page again and compare the keys with what the API states will be returned
+    <li>All of these results are listed in the API's documentation for this kind of response, so we will always know what to expect
+  </ol>
 </details>
 
 Plugging away in a web browser is a lightweight way to test out an API, but we can get some real power by using some utilities specifically meant for making API requests.
  
  -----
-### [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
+### 2. Working With Requests
+
+#### [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
 
 Try this out: 
 
@@ -197,7 +213,7 @@ Try this out:
 
 
 ---
-### Testing API Requests and [myJson](http://myjson.com/)
+#### Testing API Requests and [myJson](http://myjson.com/)
 
 Think back to the `URLSession` demo: I was calling our hosted `json` an "API endpoint". And in some ways it does meet the requirement: we could send a request to the `URL` and we would receive a formatted `json` response. And at its core, an API is just a way to request and receive  info based on a set of parameters. Though, in practice API's are a bit more detailed than simply plugging in a `URL` endpoint and parsing out any data that gets returned. And it's likely that you'll be working with API's with incredible frequency in your development careers. 
 
@@ -206,26 +222,23 @@ Making test requests is a big part of software, and iOS, development. So much so
 Fortunately, since working with API's is such a ubiquoitous thing for all developers (especially ios, android and web) there are quite a few resources and tools available to make development as smooth as possible. Some of the most important tools are those that let us test out API requests to verify that our inputs and outputs are correct and what we expect. 
 
 ---
-### The [Random User API](https://randomuser.me/)
+#### The [Random User API](https://randomuser.me/)
 One of my favorite APIs to use for quick testing of creating user accounts is the [Random User API](https://randomuser.me/). 
 Many of the APIs discussed prior require some sort of authentication method, but fortunately the Random User API doesn't require it making it quite easy to hit the ground rounning with testing with it. 
 
-> Side note, I found an easter egg in the source code of the site's documentation page and tweeted at the developer with my own take on it 😀 (it was a function named like konamiCode()). Could be a nice little anecdote on the development community culture in general. - Louis
+> Side note, I found an easter egg in the source code of the site's documentation page and tweeted at the developer with my own take on it 😀 (it was a function named like konamiCode()).
 
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">nice easter egg <a href="https://twitter.com/solewolf1993">@solewolf1993</a> .. needs more iddqd though. is it open for api requests? <a href="http://t.co/7djehsLWx4">http://t.co/7djehsLWx4</a></p>&mdash; Louis Tur (@louistur) <a href="https://twitter.com/louistur/status/587827969529348096">April 14, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-![Tweet Image](http://i.imgur.com/Jeqcrdk.png)
+![Tweet Image](./Images/konami_code.png)
+![The Tweet](./Images/tweet_konami.png)
 
 ---
-### iFacesterGram: Concept to Demo
+### 3. iFacesterGram: Concept to Demo
 
 Today is the beginning of the rest of everyone's social media account lives: we're going to start creating a brand new social platform called, iFacesterGram. We've lined up about $250,000 in seed money from an anonymous [angel investor](http://www.investopedia.com/terms/a/angelinvestor.asp) who attended our idea pitch event last week. Now it's time to get our little product off the ground. Our PM team wants us first to showcase what a list of users in the app would look like -- a sort of iFacesterGram "friends list." To complete this first assignment, we're going to need to accomplish a few things:
 
 1. Set up a basic UI to display our list of users
 2. Design a way to perform network calls to an API backend to get user data
- - We're going to have to use some mock data for now, but we want robust sets of data
+  - We're going to have to use some mock data for now, but we want robust sets of data
 3. Create our `User` model and decide how to parse data
 4. Populate our list of users
 5. Implement a pull-to-refresh feature
@@ -233,20 +246,29 @@ Today is the beginning of the rest of everyone's social media account lives: we'
 #### Design & Engineering
 <details>
   <summary> Q1: What UI element should we use to display the list of users? </summary>
+  <br>
   UITableviewController
+  <br>
   (Possibly) A custom UITableviewCell
+  <br>
 </details>
 <details>
   <summary> Q2: Based on what we know, what architetural design could we use for a network manager? </summary>
-  Singleton
+  <br>
+  <em>Singleton</em>
+  <br>
 </details>
 <details>
   <summary> Q3: What class in the Swift Library can we use to parse raw data from URLRequests?</summary>
-  JSONSerialization
+  <br>
+  <em>JSONSerialization</em>
+  <br>
 </details>
 <details>
   <summary> Q4: What will we need to do to ensure that our list of users updates as soon as our network request finishes?</summary>
+  <br>
   Wrapping up UI updating in a DispatchQueue.main.async block
+  <br>
 </details>
 
 #### Project Orientation
