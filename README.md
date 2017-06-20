@@ -42,7 +42,7 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
     - [Design and Engineering](https://github.com/C4Q/AC3.2-APIs#design--engineering)
     - [Project Orientation](https://github.com/C4Q/AC3.2-APIs#project-orientation)
  2. [Designing the `User` Model](https://github.com/C4Q/AC3.2-APIs#designing-the-user-model)
- 3. [Coding the `APIRequestManager`](https://github.com/C4Q/AC3.2-APIs#coding-the-apirequest-manager)
+ 3. [Coding the `APIManager`](https://github.com/C4Q/AC3.2-APIs#coding-the-apirequest-manager)
  4. [Parsing Data in Our Model](https://github.com/C4Q/AC3.2-APIs#parsing-data-in-our-model)
  5. [Pull-to-Refresh](https://github.com/C4Q/AC3.2-APIs#pull-to-refresh)
  6. [Exercises](https://github.com/C4Q/AC3.2-APIs#exercises)
@@ -287,31 +287,48 @@ Today is the beginning of the rest of everyone's social media account lives: we'
 We begin this project with a few things already set up for us (read through and get familiar with the project):
 
 1. Three files already added:
- - `User.swift` : `struct` for our model
- - `UsersTableViewController`: our primary view controller to display `Users`
- - `APIRequestManager` : our singleton to manage network requests
+  - `User.swift` : `struct` for our model
+  - `UsersTableViewController`: our primary view controller to display `Users`
+  - `APIManager` : our singleton to manage network requests
 2. Storyboard has the following:
- - An instance of `UsersTableViewController` with an embedded `UINavigationController`, set as the initial view controller
- - A single prototype `UITableViewCell` with the identifier `UserTableViewCellIdentifier`
- 
+  - An instance of `UsersTableViewController` with an embedded `UINavigationController`, set as the initial view controller
+  - A single prototype `UITableViewCell` with the identifier `UserTableViewCellIdentifier`
  
 <details>
  <summary> Q1: What does <code>private static let</code> indicate about our <code>UserTableViewCellIdentifier</code>?</summary>
+  <br>
   <ol>
+  
    <li>Private indicates that the constant is only available to be used inside of the UsersTableViewController class</li>
    <li>Static indicates that this constant belongs to the UsersTableViewController class and not any 1 instance</li>
    <li>let indicates that the value does not change</li>
+  
   </ol>
+  <br>
  </details>
  
+```swift
+ // Describe what these three keywords indicate about UserTableViewCellIdentifier
+    private static let UserTableViewCellIdentifier: String = "UserTableViewCellIdentifier"
+```
+
 ---
-### Designing the `User` model
+#### Designing the `User` model
 
 Let's take a look at the data that would could potentially be working with. In Postman, set your URL to the random user API endpoint (`https://randomuser.me/api/`) and hit "send" to make a request. Look at the `json` that is returned.. what should we use to populate our user data? 
 
 <details>
-<summary> What data should our social media app keep on a user for display?</summary>
- There really is no wrong answer to thing, and it all depends on the design we'd like for our app. We're going to start off using first, last, city, state, username, email, id, and thumbnail 
+<summary> Q: What data should our social media app keep on a user for display?</summary>
+ <br><br>
+ There really is no wrong answer to thing, and it all depends on the design we'd like for our app. We're going to start off using:
+<ul>
+ <li>first 
+ <li>last
+ <li>username
+ <li>email
+ <li>thumbnail 
+</ul>
+<br><br>
 </details>
 
 Now, let's fill out the `User` model using these properties
@@ -320,52 +337,90 @@ Now, let's fill out the `User` model using these properties
 internal struct User {
     internal let firstName: String
     internal let lastName: String
-    internal let city: String
-    internal let state: String
     internal let username: String
     internal let emailAddress: String
-    internal let id: String
     internal let thumbnailURL: String
 }
 ```
 
 ---
-### Coding the `APIRequest Manager`
+#### Coding the `APIManager`
 
-For right now, our request manager just needs to be able to do a few things: 
+For right now, our API manager just needs to be able to do a few things: 
 
 1. Send a request to the random user API endpoint
 2. Do some basic error checking
 3. Use a callback closure to handle the returned `Data`
 
-Using what you know, and the previous lessons, design a singleton-based manager class with the function `func getRandomUserData(completion: ((Data?)->Void))`. One you have it set up, call the function inside of the `viewDidLoad` of `UsersTableViewController` and make sure you're getting data and/or handling an error by printing its details out to console.
+
+#### Instructions
+
+Using what you know, and the previous lessons, design the `APIManager` to contain the following:
+
+1. Singleton-based manager class
+2. Write the function `getRandomUserData(completion: ((Data?)->Void))`. 
+  - Make sure you use the `URL` for the RandomUser API endpoint for this
+3. Test this function by calling it inside of `viewDidLoad` of `UsersTableViewController`
+  - Make sure you're getting data (don't parse it just yet)
+  - Make sure you're handling an error by printing its details out to console.
 
 ```swift
-   APIRequestManager.manager.getRandomUserData { (data) in
-       if data != nil {
-          print("Data returned!")
-       }
-   }
+// in viewDidLoad
+APIManager.manager.getRandomUserData { (data) in
+  if data != nil {
+    print("Data returned!")
+  }
+}
 ```
 
 <details>
-<summary> Q1: Our function definition is missing one thing, what is it? </summary>
+<summary> Q1: As written in step 2 of the instructions, the `getRandomUserData` definition is missing one thing, what is it? </summary>
+<br>
 It needs the <code>@escaping</code> key word for the callback closure
+<br>
+<br>
 </details>
 
 <details>
-<summary> Design Hints </summary>
-A singleton needs two things: a class-level unchanging constant <code>manager</code>, and a private default initializer.
+<summary> Design Hints: Singletons </summary>
+<br>
+A singleton needs two things: a class-level, unchanging constant named something like <code>shared/manager</code>, and a private default initializer.
+<br><br>
 Its quite helpful to define unchanging properties (such as the URL for the api) as a <code>static let</code>
+<br><br>
 </details>
 
-> __The more you know!__
-> Notice how there is a _ton_ of useless messages being printed to your console? That's an annoying new addition to the latest version of Xcode. To silence this noise, hold down <kbd>Option</kbd> while clicking on the Run button (with the play button icon) in Xcode to bring up the "Scheme Manager". Under "Environment Variables", add a new entry with the name `OS_ACTIVITY_MODE` with a value of `disable`. Now click "Run" and see a much cleaner console output! 
+---
+#### Parsing `Data` into `User`
+
+<details>
+<summary>Q: What is a unique feature of structs in Swift with regards to their initilization?</summary>
+<br>
+Structs in Swift give you a "free" initializer based on its properties (as long as you don't write your own).
+<br>
+</details>
+
+Right now we have available the following initializer for our `User`: 
+
+```swift
+  // the parameter names are determined by the name of their property
+  let newUser = User.init(first: String, last: String, username: String, emailAddress: String, thumbnailURL: String)
+```
+
+We're going to use our free initializer, but we're also going to be a bit more architecture-focused in how we do it. We're going to create another initializer that will attempt to create `User` from `Data`. 
+
 
 ---
-### Parsing `Data` in our model
+#### <<<<< BOOKMARK >>>>>>
+1. Just tested changes to User w/ failable init
+2. Changed APIRequestManager -> APIManager
+3. Need parse json to User w. failable init
+4. Add code/instructions to readme on failable init
+5. Remove the readme instructions on setting up a static func, replace with 4
+6. Continue edits on gotchas
+---
 
-Structs are nice in Swift because they give you a "free" initializer based on its properties (as long as you don't write your own). In this instance, we're going to use our free initializer, but we're going to be a bit more architecture-focused in how we do it. We're going to use a `static func` on `User` that takes in `Data` and returns `[User]?`. This `static func` is essentially going to be like our `InstaCatFactory`.
+We're going to use a `static func` on `User` that takes in `Data` and returns `[User]?`. This `static func` is essentially going to be like our `InstaCatFactory`.
 
 Guidelines:
 
@@ -376,7 +431,7 @@ Guidelines:
 In `viewDidLoad` update the call to be:
 
 ```swift 
-  APIRequestManager.manager.getRandomUserData { (data) in
+  APIManager.manager.getRandomUserData { (data) in
     if data != nil {
                 
       if let users = User.users(from: data!) {
@@ -414,7 +469,7 @@ Re-running the project to get different data sets is kind of time consuming. It 
 
 Select the `UserTableViewController` in storyboard and open it's `Attribute Inspector`. Change the `Refreshing` value from `Disabled` to `Enabled`
 
-In `UserTableViewController` create a new function called `func loadUsers()` and add in all of our `APIRequestManager` code to it. Then in `viewDidLoad` add `self.loadUsers()`
+In `UserTableViewController` create a new function called `func loadUsers()` and add in all of our `APIManager` code to it. Then in `viewDidLoad` add `self.loadUsers()`
 
 Create a new function called `func refreshRequested(_ sender: UIRefreshControl)` and have it call our `loadUsers()` function
 
@@ -426,7 +481,7 @@ Now run the project and try it out. Not perfect, but one step closer.
 ### Exercises
 
 #### 1. More Requests
-Create three more functions for our `APIRequestManager`:
+Create three more functions for our `APIManager`:
 
 1. `func getRandom(users: Int, completion: ((Data?)->Void) )`
 2. `func getRandom(users: Int, gender: UserGender, completion: ((Data?)->Void) )`
@@ -446,7 +501,7 @@ For each of these, the `users` parameter will be an `Int` that will change the n
 
 __Advanced__
 
-Using default parameter values, find a way to condense **all** of the four functions we now have in `APIRequestManager` into just one.
+Using default parameter values, find a way to condense **all** of the four functions we now have in `APIManager` into just one.
 
 #### Resources for Advanced: 
 
@@ -455,7 +510,7 @@ Using default parameter values, find a way to condense **all** of the four funct
 
 __Expert__
 
-Create a separate "factory" class to generate the appropriate `URL` given the different possible parameters of `users`, `nationality` and `gender`. Call this factory `RandomUserURLFactory` with a singleton called `manager`. This factory class is intended to be used by the `APIRequestManager`.
+Create a separate "factory" class to generate the appropriate `URL` given the different possible parameters of `users`, `nationality` and `gender`. Call this factory `RandomUserURLFactory` with a singleton called `manager`. This factory class is intended to be used by the `APIManager`.
 
 `RandomUserURLFactory` will have one function: `func endpoint(users: Int, nationality: [UserNationality], gender: UserGender) -> URL`. From those parameters, build an appropriate URL to make a request. There are no particular rules on how you should go about doing this, so feel free to explore code. Just be sure to use Postman to test URLs and make sure you have an understanding of the format of the parameters.
 

@@ -14,7 +14,7 @@
 		146EFA0A1DB9830E00592B9A /* FacesterGramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA091DB9830E00592B9A /* FacesterGramTests.swift */; };
 		146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA151DBAECED00592B9A /* UsersTableViewController.swift */; };
 		146EFA181DBAED0D00592B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA171DBAED0D00592B9A /* User.swift */; };
-		146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */; };
+		146EFA1C1DBAED5600592B9A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA1B1DBAED5600592B9A /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		146EFA0B1DB9830E00592B9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146EFA151DBAECED00592B9A /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersTableViewController.swift; path = "View Controllers/UsersTableViewController.swift"; sourceTree = "<group>"; };
 		146EFA171DBAED0D00592B9A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
-		146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIRequestManager.swift; path = Managers/APIRequestManager.swift; sourceTree = "<group>"; };
+		146EFA1B1DBAED5600592B9A /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Managers/APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 		146EFA1D1DBAED5D00592B9A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */,
+				146EFA1B1DBAED5600592B9A /* APIManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */,
+				146EFA1C1DBAED5600592B9A /* APIManager.swift in Sources */,
 				146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */,
 				146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */,
 				146EFA181DBAED0D00592B9A /* User.swift in Sources */,

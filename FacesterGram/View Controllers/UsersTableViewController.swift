@@ -15,6 +15,21 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        APIManager.shared.getRandomUserData { (data: Data?) in
+            if data != nil {
+                
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                    
+                    print(jsonData)
+                }
+                catch {
+                    print("error")
+                }
+                
+                
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
