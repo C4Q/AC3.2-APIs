@@ -85,16 +85,15 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
 
 > **How many weather apps do you think there are in the app store?**
 
-I’d wager there must be in the *thousands*, at least. Some of those apps have entire teams dedicated to building the app, while some of them are a single person; a person who might have just done it as a weekend project. And despite the great variety of apps made, all of their data is (relatively) consistent.
+I’d wager there must be *thousands* at the least. Some of those apps have entire teams dedicated to building the app, while some of them are a single person that did it as a weekend project. And despite the great variety of apps made, all of their data is (relatively) consistent.
  
-But where are those developer teams, large and small, getting their weather data? I mean here you have 1000’s of different apps and they all have the same data set. How are they able to all present the same information?
+But where are those developer teams, large and small, getting their weather data? Here you have 1000’s of different apps and they all have the same data set. How are they able to all present the same information?
  
-The answer: from an __API__ (Application Programming Interface)
+The answer: they get their data from an __API__ (Application Programming Interface)
 
 An API is a digital middleman - delivering data from some service as long as you ask for it in the right way. In this case, all of these weather apps are asking a weather-related API for data on the weather. In a broad sense **an API is a standard set of requests and responses that allows software to communicate.** And it is not just iOS apps that use API's: websites use them, Android devices use them, and computers use them. 
  
-When iOS developers talk about API's we usually mean one of two things: 
-
+> Note: When iOS developers talk about API's we usually mean one of two things: 
 1. Any library used to do a specific function in an app (for example UIKit could be considered a native iOS API for UI elements)
 2. A REST API that is used to communicate with some service on the web, (like a weather API!)
  
@@ -112,7 +111,7 @@ In the context of web-based `REST API`s, they are how your app is going to talk 
 - Perhaps you have a new take on location-based B2B services, and will make use of the [Foursquare API](https://developer.foursquare.com/) to load local business data
 - Have a way to track pokemon in PokemonGo? Seems like a good place to use the [Google Maps API](https://developers.google.com/maps/) to display live GPS data
  
-Apps can use multiple `REST` API's to perform complex tasks and create novel experiences for their users. With enough practice and skill, you can even develop your own APIs that other developers will use
+Apps can even use multiple `REST`ful API's to perform complex tasks and create novel experiences for their users. With enough practice and skill, you can even develop your own APIs that other developers will use. 
  
 ---
 
@@ -124,17 +123,20 @@ To get a sense of what JSON looks like, and how its used, let's go ahead and nav
  
 ![Response JSON for maps API](./Images/googleMapsAPI.png)
 
-Not an exciting result, but there's way more here than you might initially expect. For one, we see that the page is essentially a dictionary with three keys, `error_message, results, and status`. But why those three keys, and how can we know to expect them? And moreover, how did we know to go to that URL to even try this out?
+Not an exciting result, but there's way more here than you might initially expect. For one, we see that the page is essentially a dictionary with three keys, `error_message`, `results`, and `status`. But why those three keys, and how can we know to expect them? And moreover, how did we know to go to that URL for this example?
  
 ----
 
 #### API Documentation
 
-As mentioned before, API's define a standard for how software can communicate. Meaning that they define the kinds of *requests* that can be made to them, along with the *response* they will return. `JSON` defines the structure and syntax of the request/response, but its up to the API as to what should be included in a request and what could be included in the response. 
+As mentioned before, API's define a standard for how software can communicate. Meaning that they define the kinds of *requests* that can be made to them, along with the *response* they will return. `JSON` defines the structure the request/response, but its up to the API as to what should be included in a request and what could be included in the response. 
  
-All APIs will provide documentation on exactly what they expect in a request, and what they will return in a response. For example, take a look at this except from the google geocoding API docs:
+All APIs will provide documentation on exactly what they expect in a request, and what they will return in a response. For example, take a look at this excerpt from the google geocoding API docs:
 
+**Error Message Documentation**
 ![Error message documentation](./Images/error_message.png)
+
+**Status Message Documentation**
 ![Status Codes documentation](./Images/status_codes.png)
   
 > If we check out https://developers.google.com/maps/documentation/geocoding/intro we'll be able to see every possible request and response that can be made by the API.
@@ -143,29 +145,34 @@ All APIs will provide documentation on exactly what they expect in a request, an
 
 #### Trying out an API
 
-So looking at our previous request:
+Looking at our previous request:
 
 `http://maps.googleapis.com/maps/api/geocode/json`
 
-... we see we're getting back an error. And judging by the APIs documentation, this is expected. Fortunately in the event of a bad request to an API, it is possible that the API returns a response with helpful error messages regarding what was bad about the request. In this case, we made an "invalid request" because we didn't include some additional information it was expecting to get along with the request. This additional information passed along with a request is called **parameters**. Parameters specify additional constraints on the requests we make. They may limit the data requested by filtering it by some criteria. 
+... we see we're getting back an `error`. And judging by the APIs documentation, this is expected. Fortunately in the event of a bad request to an API, it is possible that the API returns a response with helpful error messages regarding what was bad about the request. In this case, we made an `invalid request` because we didn't include some additional information it was expecting to get along with the request. This additional information passed along with a request are called **parameters**. Parameters specify additional constraints on the requests we make. They may limit the data requested by filtering it by some criteria. 
  
 <details>
   <summary> Example 1: Adding An Address to the API call </summary>
-
+<br>
 Go back to your prior request and add the "address" key along with a "value" of the address of C4Q
 For example: http://maps.googleapis.com/maps/api/geocode/json?address=%2243-06%2045th%20Street%22
 <br>
-<br>
 Note: Parameters appear following a single ? and spaces are replaced by %20 for the actual request, but the google api will understand the request the exact same way as if you put in "43-06 45th Street"
+<br>
+<br>
 </details>
 
 <details>
   <summary> Example 2: Compare valid request with invalid one </summary>
+  <br>
+
   <ol> 
     <li>Notice how we get new data passed along with a valid request? 
     <li>Bring up the API documentation page again and compare the keys with what the API states will be returned
     <li>All of these results are listed in the API's documentation for this kind of response, so we will always know what to expect
   </ol>
+
+  <br>
 </details>
 
 Plugging away in a web browser is a lightweight way to test out an API, but we can get some real power by using some utilities specifically meant for making API requests.
@@ -215,11 +222,11 @@ Try this out:
 ---
 #### Testing API Requests and [myJson](http://myjson.com/)
 
-Think back to the `URLSession` demo: I was calling our hosted `json` an "API endpoint". And in some ways it does meet the requirement: we could send a request to the `URL` and we would receive a formatted `json` response. And at its core, an API is just a way to request and receive  info based on a set of parameters. Though, in practice API's are a bit more detailed than simply plugging in a `URL` endpoint and parsing out any data that gets returned. And it's likely that you'll be working with API's with incredible frequency in your development careers. 
+Think back to the `URLSession` demo for a moment -- I was calling our hosted `json` an "API endpoint". And in some ways it does meet the requirement: we could send a request to the myjson `URL` and we would receive a formatted `json` response. And at its core, an API is just a way to request and receive info based on a set of parameters. Though, in practice API's are a bit more detailed than simply plugging in a `URL` endpoint and parsing out any data that gets returned.
 
-Making test requests is a big part of software, and iOS, development. So much so that a fellow developer created the myjson site after he became annoyed that there were no simple ways of hosting json with the intention of testing network requests and json parsing. Making web requests, specifically to service APIs, and parsing the returned response is going to be a part of a vast majority of iOS apps. Think about all the apps you use that you can log in with Facebook! That's it's own API that needs integration in an iOS app.
+Making test requests is a big part of development. So much so that a fellow developer created the myjson site after he became annoyed that there were no simple ways of hosting json. They, like the majority of developers, needed an easy way to test network requests and parsing json. Making web requests to service APIs, along with parsing the returned response, are going to be a common task in most apps. Think about all the apps you use that you can log in with Facebook! That Facebook authentication flow is its own API that developers have integrated into their app.
 
-Fortunately, since working with API's is such a ubiquoitous thing for all developers (especially ios, android and web) there are quite a few resources and tools available to make development as smooth as possible. Some of the most important tools are those that let us test out API requests to verify that our inputs and outputs are correct and what we expect. 
+Fortunately, since working with API's is such a ubiquoitous thing for all developers there are quite a few resources and tools available to make development as smooth as possible. Some of the most important tools are those that let us test out API requests to verify that our inputs and outputs are correct and what we expect. 
 
 ---
 #### The [Random User API](https://randomuser.me/)
@@ -247,9 +254,9 @@ Today is the beginning of the rest of everyone's social media account lives: we'
 <details>
   <summary> Q1: What UI element should we use to display the list of users? </summary>
   <br>
-  UITableviewController
+  <em>UITableviewController</em>
   <br>
-  (Possibly) A custom UITableviewCell
+  (Possibly) <em>A custom UITableviewCell</em>
   <br>
 </details>
 <details>
@@ -257,20 +264,24 @@ Today is the beginning of the rest of everyone's social media account lives: we'
   <br>
   <em>Singleton</em>
   <br>
+  <br>
 </details>
 <details>
   <summary> Q3: What class in the Swift Library can we use to parse raw data from URLRequests?</summary>
   <br>
   <em>JSONSerialization</em>
   <br>
+  <br>
 </details>
 <details>
   <summary> Q4: What will we need to do to ensure that our list of users updates as soon as our network request finishes?</summary>
   <br>
-  Wrapping up UI updating in a DispatchQueue.main.async block
+  Wrapping up UI updating in a <code>DispatchQueue.main.async</code> block
+  <br>
   <br>
 </details>
 
+---
 #### Project Orientation
 
 We begin this project with a few things already set up for us (read through and get familiar with the project):
