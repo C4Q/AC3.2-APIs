@@ -407,65 +407,89 @@ Right now we have available the following initializer for our `User`:
   let newUser = User.init(first: String, last: String, username: String, emailAddress: String, thumbnailURL: String)
 ```
 
-We're going to use our free initializer, but we're also going to be a bit more architecture-focused in how we do it. We're going to create another initializer that will attempt to create `User` from `Data`. 
+Let's first try to work with this initializer inside of the completion handler of our `APIManager` request. We know that we need to convert `Data` into a Swift object by way of `JSONSerialization`, the real question is what should we be typecasting the results of `JSONSerialization`? Remember that `JSONSerialization.jsonObject(with:options:)` returns `Any` and from that `Any` we need to convert to a suitable dictionary type. 
 
+<details>
+<summary>Q: How could we determine the dictionary type we should cast to? What did we do in the `NSURL` lesson?</summary>
+<br><br>
+We determined the dictionary type based on the <code>JSON</code> in our project. The <code>instacats.json</code> file was set up as a <code>[[String:String]]</code>. To determine what we should convert to now, we need to take a look at the response <code>JSON</code> from the RandomUserAPI
+<br><br>
+</details>
+<details>
+<summary>Q: What should we typecast to?</summary>
+<br><br>
+Based on the response from RandomUserAPI, we first need to cast the <Any> object returned from <code>JSONSerialization</code> to <code>[String : AnyObject]</code>. This is because the top level response has 
+two key values, <code>results, info</code>, and the value for each of those keys varies. 
+<br><br>
+</details>
 
----
-#### <<<<< BOOKMARK >>>>>>
-1. Just tested changes to User w/ failable init
-2. Changed APIRequestManager -> APIManager
-3. Need parse json to User w. failable init
-4. Add code/instructions to readme on failable init
-5. Remove the readme instructions on setting up a static func, replace with 4
-6. Continue edits on gotchas
----
+> Try to answer the above questions before looking at the code below 💪
 
-We're going to use a `static func` on `User` that takes in `Data` and returns `[User]?`. This `static func` is essentially going to be like our `InstaCatFactory`.
+Being sure to wrap up our `JSONSerialization` function in a `do-catch`, we can write:
 
-Guidelines:
+```swift
+// in viewDidLoad
+APIManager.manager.getRandomUserData { (data) in
+  if data != nil {
+    print("Data returned!")
 
-1. The function signature looks like `static func users(from data: Data) -> [User]?`
-2. Make as many smaller functions as you'd like in order to convert from `Data` into `[User]` (you can also use none, if you'd like, and just put all of the code inside of `users(from:)`)
-3. Test this thoroughly by running the app multiple times
+    // 1. JSONSerialization can throw, so it needs to be in this do/catch block
+    do {
 
-In `viewDidLoad` update the call to be:
+      // 2. We do a force typecast to [String : AnyObject]. We may as well since we're already in do/catch and 
+      //    can handle errors gracefully
+      let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+      
+      // 3. We're interested in the value of the "results" key, which is what contains the dictionary representing
+      //    a User object
+      if let resultsJSON = json["results"] as? [String : AnyObject] {
+         
+        // ...more parsing here...
 
-```swift 
-  APIManager.manager.getRandomUserData { (data) in
-    if data != nil {
-                
-      if let users = User.users(from: data!) {
-         print("We've got users! \(users)")
-      }
+        let user = User(firstName: first, lastName: last, username: user, emailAddress: email, thumbnailURL: thumb)
+        print(user)
+      }     
     }
+    catch {
+      // 4. The catch block of a do/catch has access to an error: Error object that represents the error thrown in
+      //    the "do" portion of the block. You can call it directly in the scope of the catch block. 
+      print("Error Occurred: \(error.localizedDescription)")      
+    }
+
   }
+}
 ```
 
-#### Lecture Notes Update:
+The above code will get you part of the way to a `User`, but now it's up to you to finish the rest of the parsing. Take a look at the response `JSON` sent from the RandomUserAPI to know what keys and object types you're looking for. Reference the `NSURL` lesson if you're having trouble. 
 
-1. Ignore the `let id: String` constant in `User` for now (this value is occasionally `nil`)
- - Alternatively, if you've done the normal casting and it all works, adjust the `id` parameter to be an `Optional`
-2. You'll run into an issue with casting from `"location"` if you attempt to cast it's contents to `[String : String]`. The reason being that the value for the `postalCode` key is an `Integer`. So the cast will fail if you try to set it as a `[String: String]`. There are different approaches to how to handle this, but it might be easiest to get the value of `jsonDict["location"] as? [String : AnyObject]`, followed by getting the value for the `state` and `city` keys as `String`
+> Todo: add answer for this in readme
 
-#### Handling Errors
-As you parse out the `Any` object into arrays and dictionaries, I would recommend adding `print` statements along the way to see where something is working or failing
+---
+### 4. Exercises
 
-#### Populating the cells simply
-Set the cell's `textLabel` to display a user's first and last name, and the `detailLabel` to display their username
+#### *Refactor*
+It's kind of a pain to have to parse out `JSON` inside the body of our request's completion handler: it's a lot of lines of code and it's easy to make a small mistake that results in the parsing to fail. It would be a lot better if we moved this parsing into an initializer for `User`. For this first exercise, create a new `init` on `User` and move the appropriate code out of `UsersTableViewController`:
+
+```swift
+User.init(json: [String : AnyObject]) 
+```
+
+#### Displaying a `User` in the `UITableView`
+Once you have the `User` object parsed out, have their data be displayed on the table view. Set the cell's `textLabel` to display a user's first and last name, and the `detailLabel` to display their username
 
 <details>
 <summary>Implementation Hints</summary>
-You'll have to update <code>numberOfRows, numberOfSections, and cellForRow</code>
+<br><br>
+You'll have to update <code>numberOfRows, numberOfSections, and cellForRow</code><br><br>
 
-You may want to add a variable to the tableview controller <code>internal var users: [User] = []</code>
+You may want to add a variable to the tableview controller <code>internal var users: [User] = []</code><br><br>
 
 Don't forget to update your UI properly! There's a special closure to bring stuff over from the "other" road into the "main" road
+<br><br>
 </details>
 
----
-### Pull to Refresh
-
-Re-running the project to get different data sets is kind of time consuming. It would be much better if we could just do the standard pull-to-refresh action wouldn't it? Heck yea. 
+#### *Pull-to-Refresh*
+Re-running the project to get different data sets is time consuming. It would be much better if we could just do the standard pull-to-refresh action wouldn't it? Heck yea. 
 
 Select the `UserTableViewController` in storyboard and open it's `Attribute Inspector`. Change the `Refreshing` value from `Disabled` to `Enabled`
 
@@ -475,7 +499,52 @@ Create a new function called `func refreshRequested(_ sender: UIRefreshControl)`
 
 Back in `viewDidLoad`, add `self.refreshControl?.addTarget(self, action: #selector(refreshRequested(_:)), for: .valueChanged)`
 
-Now run the project and try it out. Not perfect, but one step closer. 
+Now run the project and try it out.
+
+#### Advanced
+
+1. Add a new, *failable* initializer to `User`. Rather than crashing your app when a request isn't properly parsed `nil` will be returned instead. The function will look like:
+
+`User.init?(json: [String : AnyObject])`
+
+#### Resources for Advanced: 
+1. [Failable Initializers - Swift Blog](https://developer.apple.com/swift/blog/?id=17)
+2. [Initialization - Swift Programming Language](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html)
+3. [Failable Initializers with Default Property Values - Louis Tur via Medium](https://medium.com/@louistur/failable-initializers-with-default-property-values-7b223d2f1b3f)
+
+
+
+
+>>> Bookmark:
+1. Add exercise answers
+2. solution branch
+3. Split out bottom code into APIs-II
+4. Double check image uses, could use more
+5. Clean up repo for fork-readiness
+6. Remove old branches
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> This should be the next lesson:
+
+1. how to build request
+2. Exercise on building request functions
+3. Exercise on re-writing to use default parameters
+4. Advanced on next section is for the URL factory method
+
+#### Handling Errors
+As you parse out the `Any` object into arrays and dictionaries, I would recommend adding `print` statements along the way to see where something is working or failing
 
 ---
 ### Exercises

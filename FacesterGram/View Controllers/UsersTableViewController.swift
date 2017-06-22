@@ -19,14 +19,15 @@ class UsersTableViewController: UITableViewController {
             if data != nil {
                 
                 do {
-                    let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+                    if let resultsJSON = json["results"] as? [String : AnyObject] {
+//                        let user = 
+                    }
                     
-                    print(jsonData)
                 }
                 catch {
-                    print("error")
+                    print("Error Occurred: \(error.localizedDescription)")
                 }
-                
                 
             }
         }

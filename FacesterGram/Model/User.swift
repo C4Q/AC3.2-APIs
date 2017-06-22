@@ -23,6 +23,23 @@ internal struct User {
         self.thumbnailURL = thumbnailURL
     }
     
+    init(json: [String : AnyObject]) {
+        
+        let name: [String : String] = json["name"] as! [String : String]
+        let first: String = name["first"]!
+        let last: String = name["last"]!
+
+        let login: [String : String] = json["login"] as! [String : String]
+        let username: String = login["username"]!
+        
+        let pictures: [String : String] = json["picture"] as! [String : String]
+        let thumbnail: String = pictures["thumbnail"]!
+        
+        let email: String = json["email"] as! String
+        
+        self.init(firstName: first, lastName: last, username: username, emailAddress: email, thumbnailURL: thumbnail)
+    }
+    
     init?(data: Data) {
         do {
             let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
