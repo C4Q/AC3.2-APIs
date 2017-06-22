@@ -522,6 +522,7 @@ Now run the project and try it out.
 4. Double check image uses, could use more
 5. Clean up repo for fork-readiness
 6. Remove old branches
+7. add definitions
 
 
 
