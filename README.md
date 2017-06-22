@@ -1,54 +1,5 @@
 # AC3.2-APIs: Intro
----
-### Solutions Table of Contents:
 
-> Todo: Only part 1
-
-1. Part 1
-  1. [Exercise Problem #1](https://github.com/C4Q/AC3.2-APIs/commit/eac9a12b045b9d8e429bea2455d8f464dc6df856)
-  2. [Exercise Problem #2](https://github.com/C4Q/AC3.2-APIs/commit/95d7ff70877ecfae063ca54535e3f4e44366be02)
-  3. [Exercise Problem #3](https://github.com/C4Q/AC3.2-APIs/commit/360b01f2c471790af8e9785abb0afa755e0ccbb3)
-  4. [Advanced Solution](https://github.com/C4Q/AC3.2-APIs/commit/50ea9acef5f4b02a99a9adc12f079b36570d08b5)
-  5. [Expert Solution](https://github.com/C4Q/AC3.2-APIs/commit/031933e726c840aeab8682ce46edcff09382997b)
-2. Part 2
-  1. [Start of Project](https://github.com/C4Q/AC3.2-APIs/tree/2_part_II_setup)
-  2. [Full Solutions (Part 1 & 2)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
-  3. Answers to [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) exercises (TBD)
-3. Part 3
-  1. [Final code for lesson](https://github.com/C4Q/AC3.2-APIs/tree/3_userDefaults)
-  2. Answers for exerices (TBD)
-
-Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) are not all covered, even in the "Full Solution" link. 
-
----
-### Contents
-
-0. Intro
-  1. [Readings](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#readings)
-  2. [Resources](https://github.com/C4Q/AC3.2-APIs#resources)
-  3. [Objectives](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#objectives)
-1. APIs in Concept
-  1. [APIs, What Are They?](https://github.com/C4Q/AC3.2-APIs#apis-what-are-they)
-  2. [Why Do APIs Matter](https://github.com/C4Q/AC3.2-APIs#why-do-apis-matter)
-  3. [JSON (a deeper dive)](https://github.com/C4Q/AC3.2-APIs#json-a-deeper-dive)
-  4. [API Documentation](https://github.com/C4Q/AC3.2-APIs#api-documentation)
-  5. [Trying out an API](https://github.com/C4Q/AC3.2-APIs#trying-out-an-api)
-2. Working with Requests
-  1. [Postman](https://github.com/C4Q/AC3.2-APIs#postman)
-  2. [Testing API Requests and myjson](https://github.com/C4Q/AC3.2-APIs#testing-api-requests-and-myjson)
-  3. [The RandomUserAPI](https://github.com/C4Q/AC3.2-APIs#the-random-user-api)
-3. iFacesterGram (Project)
-  1. [iFacesterGram: Concept to Demo](https://github.com/C4Q/AC3.2-APIs#ifacestergram-concept-to-demo)
-    - [Design and Engineering](https://github.com/C4Q/AC3.2-APIs#design--engineering)
-    - [Project Orientation](https://github.com/C4Q/AC3.2-APIs#project-orientation)
- 2. [Designing the `User` Model](https://github.com/C4Q/AC3.2-APIs#designing-the-user-model)
- 3. [Coding the `APIManager`](https://github.com/C4Q/AC3.2-APIs#coding-the-apirequest-manager)
- 4. [Parsing Data in Our Model](https://github.com/C4Q/AC3.2-APIs#parsing-data-in-our-model)
- 5. [Pull-to-Refresh](https://github.com/C4Q/AC3.2-APIs#pull-to-refresh)
- 6. [Exercises](https://github.com/C4Q/AC3.2-APIs#exercises)
-    - [1. More Requests](https://github.com/C4Q/AC3.2-APIs#1-more-requests)
-    - [2. Error Handling](https://github.com/C4Q/AC3.2-APIs#2-error-handling-exercise-to-be-done-after-error-handling-lesson)
- 
 ---
 ### Readings
 
@@ -61,13 +12,16 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
 4. [Basics of Pull to Refresh - Andrew Bancroft](https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/)
 
 ### Resources:
+
 1. [Postman](https://www.getpostman.com/) - Free tool to test API requests
 2. [Random User API](https://randomuser.me/) - Simple API useful for simple user creation
 3. [Google Geocoding API: Intro](https://developers.google.com/maps/documentation/geocoding/intro)
 
 ### Definitions:
 
-> Todo 
+1. **API**: Application program interface (API) is a set of routines, protocols, and tools for building software applications. An API specifies how software components should interact. [Webopedia](http://www.webopedia.com/TERM/A/API.html)
+2. **RESTful API**: A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. [Quora](https://www.quora.com/What-is-a-REST-API/answer/Ruben-Verborgh?srid=dpgi)
+3. **HTTP, Request/Response**: Whenever your web browser fetches a file (a page, a picture, etc) from a web server, it does so using HTTP - that's "Hypertext Transfer Protocol".  HTTP is a request/response protocol, which means your computer sends a request for some file (e.g. "Get me the file 'home.html'"), and the web server sends back a response ("Here's the file", followed by the file itself). [RVE](http://rve.org.uk/dumprequest)
 
 ---
 ### 0. Objectives
@@ -80,10 +34,9 @@ Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-A
 7. Begin working on iFacesterGram
 
 ---
- 
 ### 1. API's, What Are They? 
 
-> **How many weather apps do you think there are in the app store?**
+**How many weather apps do you think there are in the app store?**
 
 I’d wager there must be *thousands* at the least. Some of those apps have entire teams dedicated to building the app, while some of them are a single person that did it as a weekend project. And despite the great variety of apps made, all of their data is (relatively) consistent.
  
@@ -94,11 +47,10 @@ The answer: they get their data from an __API__ (Application Programming Interfa
 An API is a digital middleman - delivering data from some service as long as you ask for it in the right way. In this case, all of these weather apps are asking a weather-related API for data on the weather. In a broad sense **an API is a standard set of requests and responses that allows software to communicate.** And it is not just iOS apps that use API's: websites use them, Android devices use them, and computers use them. 
  
 > Note: When iOS developers talk about API's we usually mean one of two things: 
-1. Any library used to do a specific function in an app (for example UIKit could be considered a native iOS API for UI elements)
-2. A REST API that is used to communicate with some service on the web, (like a weather API!)
+> 1. Any library used to do a specific function in an app (for example UIKit could be considered a native iOS API for UI elements)
+> 2. A REST API that is used to communicate with some service on the web, (like a weather API!)
  
 ----
-
 #### Why do APIs matter
  
 __They allow you to develop software faster!__ The existance of APIs let you perform a variety of tasks that just take way too long to write out yourself. Can you imagine having to write out your own custom `JSONSerialization` function for every app you create?
@@ -114,7 +66,6 @@ In the context of web-based `REST API`s, they are how your app is going to talk 
 Apps can even use multiple `REST`ful API's to perform complex tasks and create novel experiences for their users. With enough practice and skill, you can even develop your own APIs that other developers will use. 
  
 ---
-
 #### JSON (A deeper dive)
 
 Since there is a wide possibility of devices that use API's and many differnt APIs providing unique services, there needs to be a standard for how they can all communicate effectively. The most common format in use is `JSON` (Javascript Object Notation). `JSON` defines how the data returned from an API will be formatted, and at its core is really just a dictionary. You may even often hear json referred to as a "json dictionary." Though, the structure and content that json dictionary's key/value pairs is up to the API. This is what we mean when we say that __"an API defines it's data response"__.
@@ -126,7 +77,6 @@ To get a sense of what JSON looks like, and how its used, let's go ahead and nav
 Not an exciting result, but there's way more here than you might initially expect. For one, we see that the page is essentially a dictionary with three keys, `error_message`, `results`, and `status`. But why those three keys, and how can we know to expect them? And moreover, how did we know to go to that URL for this example?
  
 ----
-
 #### API Documentation
 
 As mentioned before, API's define a standard for how software can communicate. Meaning that they define the kinds of *requests* that can be made to them, along with the *response* they will return. `JSON` defines the structure the request/response, but its up to the API as to what should be included in a request and what could be included in the response. 
@@ -142,7 +92,6 @@ All APIs will provide documentation on exactly what they expect in a request, an
 > If we check out https://developers.google.com/maps/documentation/geocoding/intro we'll be able to see every possible request and response that can be made by the API.
 
 ----
-
 #### Trying out an API
 
 Looking at our previous request:
@@ -233,15 +182,10 @@ Fortunately, since working with API's is such a ubiquoitous thing for all develo
 One of my favorite APIs to use for quick testing of creating user accounts is the [Random User API](https://randomuser.me/). 
 Many of the APIs discussed prior require some sort of authentication method, but fortunately the Random User API doesn't require it making it quite easy to hit the ground rounning with testing with it. 
 
-> Side note, I found an easter egg in the source code of the site's documentation page and tweeted at the developer with my own take on it 😀 (it was a function named like konamiCode()).
-
-![Tweet Image](./Images/konami_code.png)
-![The Tweet](./Images/tweet_konami.png)
-
 ---
 ### 3. iFacesterGram: Concept to Demo
 
-Today is the beginning of the rest of everyone's social media account lives: we're going to start creating a brand new social platform called, iFacesterGram. We've lined up about $250,000 in seed money from an anonymous [angel investor](http://www.investopedia.com/terms/a/angelinvestor.asp) who attended our idea pitch event last week. Now it's time to get our little product off the ground. Our PM team wants us first to showcase what a list of users in the app would look like -- a sort of iFacesterGram "friends list." To complete this first assignment, we're going to need to accomplish a few things:
+Today is the beginning of the rest of everyone's social media account lives: we're going to start creating a brand new social platform called, iFacesterGram. We've lined up some seed money from an anonymous [angel investor](http://www.investopedia.com/terms/a/angelinvestor.asp) who attended our idea pitch event last week. Now it's time to get our little product off the ground. Our PM team wants us first to showcase what a list of users in the app would look like -- a sort of iFacesterGram "friends list." To complete this first assignment, we're going to need to accomplish a few things:
 
 1. Set up a basic UI to display our list of users
 2. Design a way to perform network calls to an API backend to get user data
@@ -306,7 +250,7 @@ We begin this project with a few things already set up for us (read through and 
   </ol>
   <br>
  </details>
- 
+
 ```swift
  // Describe what these three keywords indicate about UserTableViewCellIdentifier
     private static let UserTableViewCellIdentifier: String = "UserTableViewCellIdentifier"
@@ -319,7 +263,7 @@ Let's take a look at the data that would could potentially be working with. In P
 
 <details>
 <summary> Q: What data should our social media app keep on a user for display?</summary>
- <br><br>
+ <br>
  There really is no wrong answer to thing, and it all depends on the design we'd like for our app. We're going to start off using:
 <ul>
  <li>first 
@@ -440,14 +384,16 @@ APIManager.manager.getRandomUserData { (data) in
       //    can handle errors gracefully
       let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
       
-      // 3. We're interested in the value of the "results" key, which is what contains the dictionary representing
+      // 3. We're interested in the value of the "results" key, which ends up being an array of dictionary objects each representing a user
       //    a User object
-      if let resultsJSON = json["results"] as? [String : AnyObject] {
+      if let resultsJSON = json["results"] as? [[String : AnyObject]] {
          
-        // ...more parsing here...
+        for result in resultsJSON {
+          // ...do your parsing here...
 
-        let user = User(firstName: first, lastName: last, username: user, emailAddress: email, thumbnailURL: thumb)
-        print(user)
+          let newUser = User(firstName: first, lastName: last, username: user, emailAddress: email, thumbnailURL: thumb)
+          print(newUser.firstName, newUser.lastName)
+        }
       }     
     }
     catch {
@@ -462,19 +408,17 @@ APIManager.manager.getRandomUserData { (data) in
 
 The above code will get you part of the way to a `User`, but now it's up to you to finish the rest of the parsing. Take a look at the response `JSON` sent from the RandomUserAPI to know what keys and object types you're looking for. Reference the `NSURL` lesson if you're having trouble. 
 
-> Todo: add answer for this in readme
-
 ---
 ### 4. Exercises
 
-#### *Refactor*
+#### A. *Refactor*
 It's kind of a pain to have to parse out `JSON` inside the body of our request's completion handler: it's a lot of lines of code and it's easy to make a small mistake that results in the parsing to fail. It would be a lot better if we moved this parsing into an initializer for `User`. For this first exercise, create a new `init` on `User` and move the appropriate code out of `UsersTableViewController`:
 
 ```swift
 User.init(json: [String : AnyObject]) 
 ```
 
-#### Displaying a `User` in the `UITableView`
+#### B. Displaying a `User` in the `UITableView`
 Once you have the `User` object parsed out, have their data be displayed on the table view. Set the cell's `textLabel` to display a user's first and last name, and the `detailLabel` to display their username
 
 <details>
@@ -488,7 +432,7 @@ Don't forget to update your UI properly! There's a special closure to bring stuf
 <br><br>
 </details>
 
-#### *Pull-to-Refresh*
+#### C. *Pull-to-Refresh*
 Re-running the project to get different data sets is time consuming. It would be much better if we could just do the standard pull-to-refresh action wouldn't it? Heck yea. 
 
 Select the `UserTableViewController` in storyboard and open it's `Attribute Inspector`. Change the `Refreshing` value from `Disabled` to `Enabled`
@@ -499,99 +443,19 @@ Create a new function called `func refreshRequested(_ sender: UIRefreshControl)`
 
 Back in `viewDidLoad`, add `self.refreshControl?.addTarget(self, action: #selector(refreshRequested(_:)), for: .valueChanged)`
 
+Lastly, add `self.refreshControl?.endRefreshing()` inside of `DispatchQueue.main.async`, after you call `self.tableView.reloadData()`
+
 Now run the project and try it out.
 
-#### Advanced
+#### D. Advanced
 
-1. Add a new, *failable* initializer to `User`. Rather than crashing your app when a request isn't properly parsed `nil` will be returned instead. The function will look like:
+__Resources for Advanced:__ 
+- [Failable Initializers - Swift Blog](https://developer.apple.com/swift/blog/?id=17)
+- [Initialization - Swift Programming Language](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html)
+- [Failable Initializers with Default Property Values - Louis Tur via Medium](https://medium.com/@louistur/failable-initializers-with-default-property-values-7b223d2f1b3f)
 
-`User.init?(json: [String : AnyObject])`
+Add a new, *failable* initializer to `User`. Rather than crashing your app when a request isn't properly parsed `nil` will be returned instead. The function will look like:
 
-#### Resources for Advanced: 
-1. [Failable Initializers - Swift Blog](https://developer.apple.com/swift/blog/?id=17)
-2. [Initialization - Swift Programming Language](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html)
-3. [Failable Initializers with Default Property Values - Louis Tur via Medium](https://medium.com/@louistur/failable-initializers-with-default-property-values-7b223d2f1b3f)
+`init?(failableJSON json: [String : AnyObject])`
 
-
-
-
->>> Bookmark:
-1. Add exercise answers
-2. solution branch
-3. Split out bottom code into APIs-II
-4. Double check image uses, could use more
-5. Clean up repo for fork-readiness
-6. Remove old branches
-7. add definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>> This should be the next lesson:
-
-1. how to build request
-2. Exercise on building request functions
-3. Exercise on re-writing to use default parameters
-4. Advanced on next section is for the URL factory method
-
-#### Handling Errors
-As you parse out the `Any` object into arrays and dictionaries, I would recommend adding `print` statements along the way to see where something is working or failing
-
----
-### Exercises
-
-#### 1. More Requests
-Create three more functions for our `APIManager`:
-
-1. `func getRandom(users: Int, completion: ((Data?)->Void) )`
-2. `func getRandom(users: Int, gender: UserGender, completion: ((Data?)->Void) )`
-3. `func getRandom(users: Int, nationality: UserNationality, completion: ((Data?)->Void) )`
-
-For each of these, the `users` parameter will be an `Int` that will change the number of results returned on an API call. `UserGender` and `UserNationality` should be two `enum` that correspond to the possible options as listed in the RandomUserAPI documentation (including a "no-preference" option). 
-
-<details><summary>Code Hints</summary>
-
-<ol>
-<li> Your enums will look like this: <code>enum UserGender: String { ... }</code> and <code>enum UserNationality: String { ... }</code>
-<li> Constructing URL's is more easily done by starting off with a <code>String</code> and then later using <code>URL(string:)</code> when the string is ready.
-<li>Pay attention to the documentation on making requests with parameter. 
-</ol>
-
-</details>
-
-__Advanced__
-
-Using default parameter values, find a way to condense **all** of the four functions we now have in `APIManager` into just one.
-
-#### Resources for Advanced: 
-
-1. [Why You should love default parameter values - Natasha the Robot](https://www.natashatherobot.com/swift-default-parameter-values/)
-2. [Parameter Defaults and Optional Function Parameters](https://craiggrummitt.com/2016/06/29/parameter-defaults-and-optional-function-parameters-in-swift-3-0/)
-
-__Expert__
-
-Create a separate "factory" class to generate the appropriate `URL` given the different possible parameters of `users`, `nationality` and `gender`. Call this factory `RandomUserURLFactory` with a singleton called `manager`. This factory class is intended to be used by the `APIManager`.
-
-`RandomUserURLFactory` will have one function: `func endpoint(users: Int, nationality: [UserNationality], gender: UserGender) -> URL`. From those parameters, build an appropriate URL to make a request. There are no particular rules on how you should go about doing this, so feel free to explore code. Just be sure to use Postman to test URLs and make sure you have an understanding of the format of the parameters.
-
-Examples:
-
-| | |
-|---|---|
-|Input|`RandomUserURLFactory.manager.endpoint(users: 10, nationality: [.GB], gender: .male)`|
-|Output| `https://randomuser.me/api/?results=10&nat=GB&gender=male` |
-
-| | |
-|---|---|
-|Input| `RandomUserURLFactory.manager.endpoint(users: 2, nationality: [.AU,.BR,.GB], gender: .noPreference)` |
-|Output| `https://randomuser.me/api/?results=2&nat=AU,BR,GB&gender=` |
+![One Does Not Simply JSON...](./Images/mordor.jpg)

@@ -28,7 +28,7 @@ internal struct User {
         let name: [String : String] = json["name"] as! [String : String]
         let first: String = name["first"]!
         let last: String = name["last"]!
-
+        
         let login: [String : String] = json["login"] as! [String : String]
         let username: String = login["username"]!
         
@@ -40,50 +40,42 @@ internal struct User {
         self.init(firstName: first, lastName: last, username: username, emailAddress: email, thumbnailURL: thumbnail)
     }
     
-    init?(data: Data) {
-        do {
-            let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
-            
-            // 4. parse out name
-            guard
-                let name: [String : String] = jsonData["name"] as? [String : String],
-                let first: String = name["first"],
-                let last: String = name["last"]
-                else {
-                    return nil
-            }
-            
-            // 6. parse out user name
-            guard
-                let login: [String : String] = jsonData["login"] as? [String : String],
-                let username: String = login["username"]
-                else {
-                    return nil
-            }
-            
-            // 8. parse out image URLs
-            guard
-                let pictures: [String : String] = jsonData["picture"] as? [String : String],
-                let thumbnail: String = pictures["thumbnail"]
-                else {
-                    return nil
-            }
-            
-            // 9. the rest
-            guard let email: String = jsonData["email"] as? String else {
+    init?(failableJSON json: [String : AnyObject]) {
+        // parse out name
+        guard
+            let name: [String : String] = json["name"] as? [String : String],
+            let first: String = name["first"],
+            let last: String = name["last"]
+            else {
                 return nil
-            }
-            
-            self = User(firstName: first,
-                        lastName: last,
-                        username: username,
-                        emailAddress: email,
-                        thumbnailURL: thumbnail)
-            
         }
-        catch {
-            print("Error encountered with parsing: \(error)")
+        
+        // parse out user name
+        guard
+            let login: [String : String] = json["login"] as? [String : String],
+            let username: String = login["username"]
+            else {
+                return nil
+        }
+        
+        // parse out image URLs
+        guard
+            let pictures: [String : String] = json["picture"] as? [String : String],
+            let thumbnail: String = pictures["thumbnail"]
+            else {
+                return nil
+        }
+        
+        // the rest
+        guard let email: String = json["email"] as? String else {
             return nil
         }
+        
+        self = User(firstName: first,
+                    lastName: last,
+                    username: username,
+                    emailAddress: email,
+                    thumbnailURL: thumbnail)
+        
     }
 }
