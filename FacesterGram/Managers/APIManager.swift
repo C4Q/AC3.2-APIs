@@ -9,26 +9,19 @@
 import Foundation
 
 class APIManager {
-    private static let randomAPIEndpoint: URL = URL(string: "https://randomuser.me/api/")!
+    // Create a constant for the API endpoint
     
-    static let shared: APIManager = APIManager()
-    private init() {}
+    // Create a singleton
     
-    
-    // MARK: - In class example
+    // MARK: API Calls
     func getRandomUserData(completion: @escaping ((Data?)->Void)) {
         
-        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: APIManager.randomAPIEndpoint) { (data: Data?, response: URLResponse?, error: Error?) in
-            if error != nil {
-                print("Error encountered in API request: \(String(describing: error?.localizedDescription))")
-            }
-            
-            if data != nil {
-                print("Data returned in response")
-                completion(data)
-            }
-            
-            }.resume()
+        // 1. Create a URLSession
+        
+        // 2. Create a dataTask
+        
+        // 3. Handle response (error/data)
+        
+        // 4. Call completion handler
     }
 }

@@ -411,6 +411,8 @@ The above code will get you part of the way to a `User`, but now it's up to you 
 ---
 ### 4. Exercises
 
+❗❗❗ Be sure to uncomment the unit tests for this project ❗❗❗
+
 #### A. *Refactor*
 It's kind of a pain to have to parse out `JSON` inside the body of our request's completion handler: it's a lot of lines of code and it's easy to make a small mistake that results in the parsing to fail. It would be a lot better if we moved this parsing into an initializer for `User`. For this first exercise, create a new `init` on `User` and move the appropriate code out of `UsersTableViewController`:
 
