@@ -3,13 +3,10 @@
 ---
 ### Readings
 
-1. [What is an API? - Mulesoft via Youtube](https://www.youtube.com/watch?v=s7wmiS2mSXY)
-  - This is a very quick and helpful video (must watch)
-2. [REST API Concepts - Webconcepts via Youtube](https://www.youtube.com/watch?v=7YcW25PHnAA)
-  - This is a slightly longer, practical look at REST API's (must watch)
-3. [What is an API in English, Please](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.jxvvtoarm)
-  - If you understood the two videos above this link, you don't really have to read this article
-4. [Basics of Pull to Refresh - Andrew Bancroft](https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/)
+1. [What is an API? - Mulesoft via Youtube](https://www.youtube.com/watch?v=s7wmiS2mSXY) - This is a very quick and helpful video (must watch)
+  2. [REST API Concepts - Webconcepts via Youtube](https://www.youtube.com/watch?v=7YcW25PHnAA) - This is a slightly longer, practical look at REST API's (must watch)
+  3. [What is an API in English, Please](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.jxvvtoarm) - If you understood the two videos above this link, you don't really have to read this article
+  4. [Basics of Pull to Refresh - Andrew Bancroft](https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/)
 
 ### Resources:
 
@@ -188,8 +185,7 @@ Many of the APIs discussed prior require some sort of authentication method, but
 Today is the beginning of the rest of everyone's social media account lives: we're going to start creating a brand new social platform called, iFacesterGram. We've lined up some seed money from an anonymous [angel investor](http://www.investopedia.com/terms/a/angelinvestor.asp) who attended our idea pitch event last week. Now it's time to get our little product off the ground. Our PM team wants us first to showcase what a list of users in the app would look like -- a sort of iFacesterGram "friends list." To complete this first assignment, we're going to need to accomplish a few things:
 
 1. Set up a basic UI to display our list of users
-2. Design a way to perform network calls to an API backend to get user data
-  - We're going to have to use some mock data for now, but we want robust sets of data
+2. Design a way to perform network calls to an API backend to get user data. We're going to have to use some mock data for now, but we want robust sets of data
 3. Create our `User` model and decide how to parse data
 4. Populate our list of users
 5. Implement a pull-to-refresh feature
@@ -231,12 +227,12 @@ Today is the beginning of the rest of everyone's social media account lives: we'
 We begin this project with a few things already set up for us (read through and get familiar with the project):
 
 1. Three files already added:
-  - `User.swift` : `struct` for our model
-  - `UsersTableViewController`: our primary view controller to display `Users`
-  - `APIManager` : our singleton to manage network requests
+- `User.swift` : `struct` for our model
+- `UsersTableViewController`: our primary view controller to display `Users`
+- `APIManager` : our singleton to manage network requests
 2. Storyboard has the following:
-  - An instance of `UsersTableViewController` with an embedded `UINavigationController`, set as the initial view controller
-  - A single prototype `UITableViewCell` with the identifier `UserTableViewCellIdentifier`
+- An instance of `UsersTableViewController` with an embedded `UINavigationController`, set as the initial view controller
+- A single prototype `UITableViewCell` with the identifier `UserTableViewCellIdentifier`
  
 <details>
  <summary> Q1: What does <code>private static let</code> indicate about our <code>UserTableViewCellIdentifier</code>?</summary>
