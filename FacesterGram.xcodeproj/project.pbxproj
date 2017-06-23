@@ -15,6 +15,8 @@
 		146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA151DBAECED00592B9A /* UsersTableViewController.swift */; };
 		146EFA181DBAED0D00592B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA171DBAED0D00592B9A /* User.swift */; };
 		146EFA1C1DBAED5600592B9A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA1B1DBAED5600592B9A /* APIManager.swift */; };
+		148D598D1EFC8DF900527BF7 /* randomUserTesting_invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 148D598B1EFC8DF900527BF7 /* randomUserTesting_invalid.json */; };
+		148D598E1EFC8DF900527BF7 /* randomUserTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = 148D598C1EFC8DF900527BF7 /* randomUserTesting.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		146EFA151DBAECED00592B9A /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersTableViewController.swift; path = "View Controllers/UsersTableViewController.swift"; sourceTree = "<group>"; };
 		146EFA171DBAED0D00592B9A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		146EFA1B1DBAED5600592B9A /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Managers/APIManager.swift; sourceTree = "<group>"; };
+		148D598B1EFC8DF900527BF7 /* randomUserTesting_invalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = randomUserTesting_invalid.json; sourceTree = "<group>"; };
+		148D598C1EFC8DF900527BF7 /* randomUserTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = randomUserTesting.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		146EFA081DB9830E00592B9A /* FacesterGramTests */ = {
 			isa = PBXGroup;
 			children = (
+				148D598B1EFC8DF900527BF7 /* randomUserTesting_invalid.json */,
+				148D598C1EFC8DF900527BF7 /* randomUserTesting.json */,
 				146EFA091DB9830E00592B9A /* FacesterGramTests.swift */,
 				146EFA0B1DB9830E00592B9A /* Info.plist */,
 			);
@@ -229,6 +235,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148D598E1EFC8DF900527BF7 /* randomUserTesting.json in Resources */,
+				148D598D1EFC8DF900527BF7 /* randomUserTesting_invalid.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
