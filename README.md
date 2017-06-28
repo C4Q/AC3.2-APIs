@@ -443,7 +443,9 @@ Back in `viewDidLoad`, add `self.refreshControl?.addTarget(self, action: #select
 
 Lastly, add `self.refreshControl?.endRefreshing()` inside of `DispatchQueue.main.async`, after you call `self.tableView.reloadData()`
 
-Now run the project and try it out.
+Now run the project and try it out. Every time you pull-to-refresh, your table should get populated with an addition `User`:
+
+![Filling out our Users](./Images/refreshing_fills_table.png)
 
 #### D. Advanced
 
